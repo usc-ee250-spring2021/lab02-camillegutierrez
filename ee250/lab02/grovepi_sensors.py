@@ -30,7 +30,22 @@ be true"""
 if __name__ == '__main__':
     PORT = 4    # D4
 
+	ultrsonic_ranger = 3 #Grove Ultrasonic ranger connected to digital port D3
+	potentiometer = 1 #Grove rotary angle sensor connected to analog port A1
+
+
     while True:
+	try:
+
+		sensor_value = grovepi.analogRead(potentiometer)
+		print(sensor_value, 'cm')
+
+		distant = ultrasonicread(ultrasonic_ranger)
+		print(distant, 'cm')
+		if distant <= sensor_value:
+			print(sensor_value, 'cm OBJ PRES')
+
+
         #So we do not poll the sensors too quickly which may introduce noise,
         #sleep for a reasonable time of 200ms between each iteration.
         time.sleep(0.2)
