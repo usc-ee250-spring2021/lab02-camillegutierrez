@@ -1,8 +1,10 @@
 """ EE 250L Lab 02: GrovePi Sensors
 
 List team members here.
+Camille Gutierrez
 
 Insert Github repository link here.
+https://github.com/usc-ee250-spring2021/GrovePi-EE250.git
 """
 
 """python3 interpreters in Ubuntu (and other linux distros) will look in a 
@@ -23,6 +25,7 @@ sys.path.append('../../Software/Python/')
 sys.path.append('../../Software/Python/grove_rgb_lcd')
 
 import grovepi
+from grove_rgb_lcd import *
 
 """This if-statement checks if you are running this python file directly. That 
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
@@ -33,18 +36,43 @@ if __name__ == '__main__':
 	ultrsonic_ranger = 3 #Grove Ultrasonic ranger connected to digital port D3
 	potentiometer = 1 #Grove rotary angle sensor connected to analog port A1
 
+	grovepi.pinMode(potentiometer,"INPUT")
+	time.sleep(1)
+
+	# Reference voltage of ADC is 5v
+	adc_ref = 5
+
+	# Vcc of the grove interface is normally 5v
+	grove_vcc = 5
+
+	# Full value of the rotary angle is 300 degrees, as per it's specs (0 to 300)
+	full_angle = 300
+
 
     while True:
 	try:
 
-		sensor_value = grovepi.analogRead(potentiometer)
-		print(sensor_value, 'cm')
+		# Read sensor value from potentiometer
+        sensor_value = grovepi.analogRead(potentiometer)
+
+        # Calculate voltage
+        voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
+
+        # Calculate rotation in degrees (0 to 300)
+        degrees = round((voltage * full_angle) / grove_vcc, 2)
+
+        threshhold = (degrees/full_angle) * 517
+
+		setText_norefresh(threshhold, 'cm \n')
 
 		distant = ultrasonicread(ultrasonic_ranger)
-		print(distant, 'cm')
-		if distant <= sensor_value:
-			print(sensor_value, 'cm OBJ PRES')
-
+		setText_norefresh(distant, 'cm')
+		if distant <= threshhold:
+			setText_norefresh(sensor_value, 'cm OBJ PRES \n' )
+			setText_norefresh(distant, 'cm')
+		else:
+			setText_nofresh(sensor_value, '            \n' )
+			setText_norefresh(distant, 'cm')
 
         #So we do not poll the sensors too quickly which may introduce noise,
         #sleep for a reasonable time of 200ms between each iteration.
