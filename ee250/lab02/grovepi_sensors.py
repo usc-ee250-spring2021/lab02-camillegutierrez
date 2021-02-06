@@ -26,6 +26,7 @@ sys.path.append('../../Software/Python/grove_rgb_lcd')
 
 import grovepi
 from grove_rgb_lcd import *
+from grovepi import *
 
 """This if-statement checks if you are running this python file directly. That 
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
@@ -33,10 +34,11 @@ be true"""
 if __name__ == '__main__':
     PORT = 4    # D4
 
-	ultrsonic_ranger = 3 #Grove Ultrasonic ranger connected to digital port D3
+	ultrasonic_ranger = 3 #Grove Ultrasonic ranger connected to digital port D3
 	potentiometer = 1 #Grove rotary angle sensor connected to analog port A1
 
 	grovepi.pinMode(potentiometer,"INPUT")
+	grovepi.pinMode(ultrasonic_ranger, "INPUT")
 	time.sleep(1)
 
 	# Reference voltage of ADC is 5v
