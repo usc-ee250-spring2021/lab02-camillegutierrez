@@ -66,17 +66,17 @@ if __name__ == '__main__':
 
 			threshhold = (degrees/full_angle) * 517
 
-			setText_norefresh(threshhold, 'cm \n')
+			setText_norefresh(str(threshhold) + 'cm \n')
 
 			distant = ultrasonicread(ultrasonic_ranger)
-			setText_norefresh(distant, 'cm')
+			setText_norefresh(str(distant) + 'cm')
 
 			if distant <= threshhold:
-				setText_norefresh(threshhold, 'cm OBJ PRES \n' )
-				setText_norefresh(distant, 'cm')
+				setText_norefresh(str(threshhold) + 'cm OBJ PRES \n' )
+				setText_norefresh(str(distant) + 'cm')
 			else:
-				setText_nofresh(threshhold, '            \n' )
-				setText_norefresh(distant, 'cm')
+				setText_nofresh(str(threshhold) + '            \n' )
+				setText_norefresh(str(distant) + 'cm')
 
 			#So we do not poll the sensors too quickly which may introduce noise,
 			#sleep for a reasonable time of 200ms between each iteration.
