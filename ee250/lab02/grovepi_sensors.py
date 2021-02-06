@@ -51,7 +51,8 @@ if __name__ == '__main__':
 	full_angle = 300
 
 
-	while True:
+	#while True:
+	for i in range(10):
 		try:
 
 			# Read sensor value from potentiometer
@@ -82,5 +83,7 @@ if __name__ == '__main__':
 			time.sleep(0.2)
 
 			print(grovepi.ultrasonicRead(PORT))
-		except: 
-			print ("error occured")
+		#except: 
+			#print ("error occured")
+		except Exception as e:
+			print (e)
