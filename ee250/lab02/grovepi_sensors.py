@@ -82,5 +82,5 @@ if __name__ == '__main__':
 			time.sleep(0.2)
 
 			print(grovepi.ultrasonicRead(PORT))
-		except e: 
-			print (e)
+		except: 
+			print ("error occured")
