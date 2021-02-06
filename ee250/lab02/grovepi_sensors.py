@@ -51,8 +51,8 @@ if __name__ == '__main__':
 	full_angle = 300
 
 
-	#while True:
-	for i in range(10):
+	while True:
+	#for i in range(10):
 		try:
 
 			# Read sensor value from potentiometer
