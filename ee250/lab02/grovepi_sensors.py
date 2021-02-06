@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
 			threshhold = int(round((degrees/full_angle) * 517))
 
-			line1 = str(threshhold) + 'cm          \n'
+			line1 = str(threshhold) + 'cm \n'
 
 			distant = ultrasonicRead(ultrasonic_ranger)
 			line2 = str(distant) + 'cm'
