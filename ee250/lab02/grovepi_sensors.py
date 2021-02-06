@@ -75,7 +75,7 @@ if __name__ == '__main__':
 				setText_norefresh(str(threshhold) + 'cm OBJ PRES \n' )
 				setText_norefresh(str(distant) + 'cm')
 			else:
-				setText_nofresh(str(threshhold) + '            \n' )
+				setText_norefresh(str(threshhold) + '            \n' )
 				setText_norefresh(str(distant) + 'cm')
 
 			#So we do not poll the sensors too quickly which may introduce noise,
