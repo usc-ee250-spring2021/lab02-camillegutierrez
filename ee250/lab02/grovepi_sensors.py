@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
 
 	while True:
-	#for i in range(10):
+
 		try:
 
 			# Read sensor value from potentiometer
@@ -64,7 +64,7 @@ if __name__ == '__main__':
 			# Calculate rotation in degrees (0 to 300)
 			degrees = round((voltage * full_angle) / grove_vcc, 2)
 
-			threshhold = int(round((degrees/full_angle) * 1023)) #517
+			threshhold = int(round((degrees/full_angle) * 1023)) 
 
 			distant = ultrasonicRead(ultrasonic_ranger)
 			line2 = str(distant) + 'cm'
@@ -72,7 +72,7 @@ if __name__ == '__main__':
 			if distant <= threshhold:
 				line1 = str(threshhold) + 'cm OBJ PRES \n'
 			else:
-				line1 = str(threshhold) + 'cm \n'
+				line1 = str(threshhold) + 'cm          \n'
 
 			setText_norefresh(line1 + line2)
 
@@ -82,7 +82,6 @@ if __name__ == '__main__':
 
 
 			print(grovepi.ultrasonicRead(PORT))
-		#except: 
-			#print ("error occured")
+		
 		except Exception as e:
 			print (e)
