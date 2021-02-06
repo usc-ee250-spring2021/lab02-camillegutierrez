@@ -29,7 +29,7 @@ from grove_rgb_lcd import *
 from grovepi import *
 
 """This if-statement checks if you are running this python file directly. That 
-is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
+is, if you run `python3 grovepi_sensors.py` in terminSal, this if-statement will 
 be true"""
 if __name__ == '__main__':
 	PORT = 4  #D4
@@ -64,15 +64,15 @@ if __name__ == '__main__':
 			# Calculate rotation in degrees (0 to 300)
 			degrees = round((voltage * full_angle) / grove_vcc, 2)
 
-			threshhold = int(round((degrees/full_angle) * 517))
-
-			line1 = str(threshhold) + 'cm \n'
+			threshhold = int(round((degrees/full_angle) * 1023)) #517
 
 			distant = ultrasonicRead(ultrasonic_ranger)
 			line2 = str(distant) + 'cm'
 
 			if distant <= threshhold:
 				line1 = str(threshhold) + 'cm OBJ PRES \n'
+			else:
+				line1 = str(threshhold) + 'cm \n'
 
 			setText_norefresh(line1 + line2)
 
