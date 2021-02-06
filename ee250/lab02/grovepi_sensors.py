@@ -64,7 +64,7 @@ if __name__ == '__main__':
 			# Calculate rotation in degrees (0 to 300)
 			degrees = round((voltage * full_angle) / grove_vcc, 2)
 
-			threshhold = (degrees/full_angle) * 517
+			threshhold = round((degrees/full_angle) * 517)
 
 			line1 = str(threshhold) + 'cm \n'
 
