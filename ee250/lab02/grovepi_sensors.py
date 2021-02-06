@@ -68,7 +68,7 @@ if __name__ == '__main__':
 
 			setText_norefresh(str(threshhold) + 'cm \n')
 
-			distant = ultrasonicread(ultrasonic_ranger)
+			distant = ultrasonicRead(ultrasonic_ranger)
 			setText_norefresh(str(distant) + 'cm')
 
 			if distant <= threshhold:
