@@ -52,33 +52,33 @@ if __name__ == '__main__':
 
 
 	while True:
-	try:
+		try:
 
-		# Read sensor value from potentiometer
-		sensor_value = grovepi.analogRead(potentiometer)
+			# Read sensor value from potentiometer
+			sensor_value = grovepi.analogRead(potentiometer)
 
-		# Calculate voltage
-		voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
+			# Calculate voltage
+			voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
 
-		# Calculate rotation in degrees (0 to 300)
-		degrees = round((voltage * full_angle) / grove_vcc, 2)
+			# Calculate rotation in degrees (0 to 300)
+			degrees = round((voltage * full_angle) / grove_vcc, 2)
 
-		threshhold = (degrees/full_angle) * 517
+			threshhold = (degrees/full_angle) * 517
 
-		setText_norefresh(threshhold, 'cm \n')
+			setText_norefresh(threshhold, 'cm \n')
 
-		distant = ultrasonicread(ultrasonic_ranger)
-		setText_norefresh(distant, 'cm')
-
-		if distant <= threshhold:
-			setText_norefresh(threshhold, 'cm OBJ PRES \n' )
-			setText_norefresh(distant, 'cm')
-		else:
-			setText_nofresh(threshhold, '            \n' )
+			distant = ultrasonicread(ultrasonic_ranger)
 			setText_norefresh(distant, 'cm')
 
-		#So we do not poll the sensors too quickly which may introduce noise,
-		#sleep for a reasonable time of 200ms between each iteration.
-		time.sleep(0.2)
+			if distant <= threshhold:
+				setText_norefresh(threshhold, 'cm OBJ PRES \n' )
+				setText_norefresh(distant, 'cm')
+			else:
+				setText_nofresh(threshhold, '            \n' )
+				setText_norefresh(distant, 'cm')
 
-		print(grovepi.ultrasonicRead(PORT))
+			#So we do not poll the sensors too quickly which may introduce noise,
+			#sleep for a reasonable time of 200ms between each iteration.
+			time.sleep(0.2)
+
+			print(grovepi.ultrasonicRead(PORT))
