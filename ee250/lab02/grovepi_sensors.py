@@ -66,21 +66,20 @@ if __name__ == '__main__':
 
 			threshhold = (degrees/full_angle) * 517
 
-			setText_norefresh(str(threshhold) + 'cm \n')
+			line1 = str(threshhold) + 'cm \n'
 
 			distant = ultrasonicRead(ultrasonic_ranger)
-			setText_norefresh(str(distant) + 'cm')
+			line2 = str(distant) + 'cm'
 
 			if distant <= threshhold:
-				setText_norefresh(str(threshhold) + 'cm OBJ PRES \n' )
-				setText_norefresh(str(distant) + 'cm')
-			else:
-				setText_norefresh(str(threshhold) + '            \n' )
-				setText_norefresh(str(distant) + 'cm')
+				line1 = str(threshhold) + 'cm OBJ PRES \n'
+
+			setText_norefresh(line1 + line2)
 
 			#So we do not poll the sensors too quickly which may introduce noise,
 			#sleep for a reasonable time of 200ms between each iteration.
 			time.sleep(0.2)
+
 
 			print(grovepi.ultrasonicRead(PORT))
 		#except: 
