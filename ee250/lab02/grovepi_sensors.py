@@ -32,7 +32,7 @@ from grovepi import *
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
 if __name__ == '__main__':
-    PORT = 4    # D4
+    PORT = 4  #D4
 
 	ultrasonic_ranger = 3 #Grove Ultrasonic ranger connected to digital port D3
 	potentiometer = 1 #Grove rotary angle sensor connected to analog port A1
@@ -69,11 +69,12 @@ if __name__ == '__main__':
 
 		distant = ultrasonicread(ultrasonic_ranger)
 		setText_norefresh(distant, 'cm')
+
 		if distant <= threshhold:
-			setText_norefresh(sensor_value, 'cm OBJ PRES \n' )
+			setText_norefresh(threshhold, 'cm OBJ PRES \n' )
 			setText_norefresh(distant, 'cm')
 		else:
-			setText_nofresh(sensor_value, '            \n' )
+			setText_nofresh(threshhold, '            \n' )
 			setText_norefresh(distant, 'cm')
 
         #So we do not poll the sensors too quickly which may introduce noise,
