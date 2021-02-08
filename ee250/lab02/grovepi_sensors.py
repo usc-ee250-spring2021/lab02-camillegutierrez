@@ -5,6 +5,10 @@ Camille Gutierrez
 
 Insert Github repository link here.
 https://github.com/usc-ee250-spring2021/lab02-camillegutierrez.git
+
+Video Demo link:
+https://drive.google.com/file/d/1I3--eXUVcygtp0ZJ51uTKNxibtVY85oV/view?usp=sharing
+
 """
 
 """python3 interpreters in Ubuntu (and other linux distros) will look in a 
