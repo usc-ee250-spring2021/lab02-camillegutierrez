@@ -4,7 +4,7 @@ List team members here.
 Camille Gutierrez
 
 Insert Github repository link here.
-https://github.com/usc-ee250-spring2021/GrovePi-EE250.git
+https://github.com/usc-ee250-spring2021/lab02-camillegutierrez.git
 """
 
 """python3 interpreters in Ubuntu (and other linux distros) will look in a 
@@ -54,7 +54,6 @@ if __name__ == '__main__':
 	while True:
 
 		try:
-
 			# Read sensor value from potentiometer
 			sensor_value = grovepi.analogRead(potentiometer)
 
@@ -80,7 +79,6 @@ if __name__ == '__main__':
 			#So we do not poll the sensors too quickly which may introduce noise,
 			#sleep for a reasonable time of 200ms between each iteration.
 			time.sleep(0.2)
-
 
 			print(grovepi.ultrasonicRead(PORT))
 		
